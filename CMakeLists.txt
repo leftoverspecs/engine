@@ -7,6 +7,8 @@ find_package(SDL2 REQUIRED CONFIG)
 find_package(SDL2_net REQUIRED CONFIG)
 
 add_library(engine STATIC
+    networking/client.hpp
+    networking/client.cpp
     networking/server.hpp
     networking/server.cpp
     networking/transmit.hpp
