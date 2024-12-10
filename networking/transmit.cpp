@@ -5,15 +5,19 @@
 namespace engine::networking {
 
 std::vector<uint8_t> receive(TCPsocket source) {
-    std::vector<uint8_t> buffer(1024);
-    const int received = SDLNet_TCP_Recv(source, buffer.data(), static_cast<int>(buffer.size()));
-    if (received <= 0) {
-        throw std::runtime_error(std::string("Can't receive data: ") + SDLNet_GetError());
-    } else {
-        buffer.resize(received);
-        auto pos = buffer.begin();
-        return {pos, buffer.end()};
-    }
+    std::vector<uint8_t> result;
+    std::vector<uint8_t> chunk(1024);
+    int received = 0;
+    do {
+        received = SDLNet_TCP_Recv(source, chunk.data(), static_cast<int>(chunk.size()));
+        if (received < 0) {
+            throw std::runtime_error(std::string("Can't receive data: ") + SDLNet_GetError());
+        }
+        if (received > 0) {
+            result.insert(result.end(), chunk.begin(), chunk.begin() + received);
+        }
+    } while (received == 0);
+    return result;
 }
 
 void send(TCPsocket destination, const std::vector<uint8_t> &m) {

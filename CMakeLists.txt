@@ -12,5 +12,9 @@ add_library(engine STATIC
     networking/server.hpp
     networking/server.cpp
     networking/transmit.hpp
-    networking/transmit.cpp)
+    networking/transmit.cpp
+    networking/initialize.hpp
+    networking/initialize.cpp
+    common/initialize.hpp
+    common/initialize.cpp)
 target_link_libraries(engine PUBLIC SDL2::SDL2 SDL2_net::SDL2_net)
