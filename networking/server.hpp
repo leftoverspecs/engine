@@ -18,6 +18,9 @@ public:
     server(uint16_t port, int max_connections);
     ~server();
 
+    server(const server &) = delete;
+    server &operator=(const server &) = delete;
+
     void run(unsigned int timeout, handler &h);
     void shutdown();
 

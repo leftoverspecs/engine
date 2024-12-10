@@ -9,6 +9,7 @@ find_package(SDL2_net REQUIRED CONFIG)
 add_library(engine STATIC
     networking/client.hpp
     networking/client.cpp
+    networking/primitives.hpp
     networking/server.hpp
     networking/server.cpp
     networking/transmit.hpp
@@ -18,3 +19,4 @@ add_library(engine STATIC
     common/initialize.hpp
     common/initialize.cpp)
 target_link_libraries(engine PUBLIC SDL2::SDL2 SDL2_net::SDL2_net)
+target_include_directories(engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

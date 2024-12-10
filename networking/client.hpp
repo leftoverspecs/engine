@@ -9,17 +9,20 @@
 
 namespace engine::networking {
 
-class Client {
+class client {
 public:
     class exception : public std::runtime_error {
     public:
         explicit exception(const std::string &message);
     };
 
-    Client(const std::string &hostname, uint16_t port);
-    ~Client();
+    client(const std::string &hostname, uint16_t port);
+    ~client();
 
-    std::vector<uint8_t> send(const std::vector<uint8_t> &m) const;
+    client(const client &other) = delete;
+    client &operator=(const client &other) = delete;
+
+    [[nodiscard]] std::vector<uint8_t> send(const std::vector<uint8_t> &m) const;
 private:
     TCPsocket socket;
 };
