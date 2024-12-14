@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace engine::common {
+namespace engine::sdl {
 
 class initialize {
 public:

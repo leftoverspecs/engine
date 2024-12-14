@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 #include <stdexcept>
 
-namespace engine::common {
+namespace engine::sdl {
 
 initialize::initialize(uint32_t flags) {
     const int result = SDL_Init(flags);
