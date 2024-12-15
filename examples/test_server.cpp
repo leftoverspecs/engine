@@ -1,8 +1,11 @@
-#include <sdl/initialize.hpp>
+#include "message.hpp"
+
+
 #include <csignal>
 #include <iomanip>
 #include <networking/initialize.hpp>
 #include <networking/server.hpp>
+#include <sdl/initialize.hpp>
 
 #include <iostream>
 
@@ -19,16 +22,9 @@ void sigint_handler(int ignore) {
 class test_handler : public engine::networking::handler {
 public:
     std::vector<uint8_t> receive(int id, const std::vector<uint8_t> &data) override {
-        for (const auto& e : data) {
-            std::cout << "0x" << std::hex << std::setfill('0') << std::setw(2) << std::right << static_cast<int>(e) << ' ';
-        }
-
-        std::cout << '\n';
-        std::vector<uint8_t> response;
-        response.reserve(data.size() * 2);
-        response.insert(response.end(), data.begin(), data.end());
-        response.insert(response.end(), data.begin(), data.end());
-        return response;
+        const Message message = decode_message(data);
+        std::cout << "Received: Message { name = \"" << message.name() << "\", age = " << message.age() << " }\n";
+        return {};
     }
 
     bool idle() override { return running; }

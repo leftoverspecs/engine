@@ -6,18 +6,19 @@
 #include <sdl/initialize.hpp>
 #include <networking/initialize.hpp>
 
+#include "message.hpp"
+
+#include <glm/ext/scalar_uint_sized.hpp>
+
 int main() {
     engine::sdl::initialize sdl(SDL_INIT_EVERYTHING);
     engine::networking::initialize sdlnet(sdl);
     engine::networking::client c("localhost", 10000);
-    std::vector<uint8_t> data(10);
-    std::iota(data.begin(), data.end(), 1);
-    auto result = c.send(data);
-    for (const auto& e : result) {
-        std::cout << "0x" << std::hex << std::setfill('0') << std::setw(2) << std::right << static_cast<int>(e) << ' ';
-    }
-    std::cout << '\n';
-    result = c.send(data);
+    Message message;
+    message.set_name("Hello World!");
+    message.set_age(10);
+    std::vector<uint8_t> data(encode_message(message));
+    std::vector<uint8_t> result(c.send(data));
     result = c.send({});
     return 0;
 }

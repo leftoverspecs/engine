@@ -11,6 +11,8 @@ find_package(SDL2_mixer REQUIRED CONFIG)
 find_package(GLEW REQUIRED)
 find_package(glm REQUIRED CONFIG)
 find_package(OpenGL REQUIRED)
+find_package(Protobuf REQUIRED)
+find_package(absl REQUIRED)
 
 add_subdirectory(assets)
 
@@ -94,8 +96,13 @@ add_executable(music_test examples/music_test.cpp)
 target_link_libraries(music_test PRIVATE engine)
 target_assets(music_test PRIVATE examples/test_music.mp3 examples/blib.wav)
 
+add_library(message STATIC examples/message.hpp examples/message.cpp)
+protobuf_generate(TARGET message PROTOS examples/example.proto)
+target_include_directories(message PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+target_link_libraries(message PUBLIC protobuf::libprotobuf absl::log_internal_check_op)
+
 add_executable(test_server examples/test_server.cpp)
-target_link_libraries(test_server PRIVATE engine)
+target_link_libraries(test_server PRIVATE engine message)
 
 add_executable(test_client examples/test_client.cpp)
-target_link_libraries(test_client PRIVATE engine)
+target_link_libraries(test_client PRIVATE engine message)
