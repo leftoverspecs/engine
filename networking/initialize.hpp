@@ -1,6 +1,6 @@
 #pragma once
 
-namespace engine::common {
+namespace engine::sdl {
 
 class initialize;
 
@@ -10,7 +10,7 @@ namespace engine::networking {
 
 class initialize {
 public:
-    explicit initialize(const common::initialize &);
+    explicit initialize(const sdl::initialize &);
     ~initialize();
 };
 

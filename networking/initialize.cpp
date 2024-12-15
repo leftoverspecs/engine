@@ -5,7 +5,7 @@
 
 namespace engine::networking {
 
-initialize::initialize(const common::initialize &) {
+initialize::initialize(const sdl::initialize &) {
     const int result = SDLNet_Init();
     if (result != 0) {
         throw std::runtime_error(std::string("Can't initialize SDL2_Net: ") + SDLNet_GetError());
