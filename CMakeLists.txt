@@ -7,6 +7,7 @@ find_package(Python3 REQUIRED COMPONENTS Interpreter)
 find_package(SDL2 REQUIRED CONFIG)
 find_package(SDL2_net REQUIRED CONFIG)
 find_package(SDL2_image REQUIRED CONFIG)
+find_package(SDL2_mixer REQUIRED CONFIG)
 find_package(GLEW REQUIRED)
 find_package(glm REQUIRED CONFIG)
 find_package(OpenGL REQUIRED)
@@ -66,7 +67,14 @@ add_library(engine STATIC
     sdl/window.cpp
     sdl/window.hpp
 )
-target_link_libraries(engine PUBLIC SDL2::SDL2 SDL2_image::SDL2_image SDL2_net::SDL2_net GLEW::glew OpenGL::GL glm::glm)
+target_link_libraries(engine PUBLIC
+    SDL2::SDL2
+    SDL2_image::SDL2_image
+    SDL2_mixer::SDL2_mixer
+    SDL2_net::SDL2_net
+    GLEW::glew
+    OpenGL::GL
+    glm::glm)
 target_include_directories(engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(engine PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 target_assets(engine PRIVATE
@@ -81,3 +89,8 @@ target_assets(engine PRIVATE
 add_executable(sprite_test examples/sprite_test.cpp)
 target_link_libraries(sprite_test PRIVATE engine)
 target_assets(sprite_test PRIVATE examples/test_sprite.png)
+
+add_executable(music_test examples/music_test.cpp)
+target_link_libraries(music_test PRIVATE engine)
+target_assets(music_test PRIVATE examples/test_music.mp3)
+target_assets(music_test PRIVATE examples/blib.wav)
