@@ -1,6 +1,6 @@
 #include "initialize.hpp"
 
-#include <SDL_net.h>
+#include <SDL2/SDL_net.h>
 #include <stdexcept>
 
 namespace engine::networking {

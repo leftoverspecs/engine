@@ -1,6 +1,7 @@
 #pragma once
 
 #include "texture.hpp"
+#include <cstddef>
 
 namespace engine::opengl {
 

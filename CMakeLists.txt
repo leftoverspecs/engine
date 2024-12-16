@@ -9,9 +9,8 @@ find_package(SDL2_net REQUIRED CONFIG)
 find_package(SDL2_image REQUIRED CONFIG)
 find_package(SDL2_mixer REQUIRED CONFIG)
 find_package(GLEW REQUIRED)
-find_package(glm REQUIRED CONFIG)
 find_package(OpenGL REQUIRED)
-find_package(Protobuf REQUIRED)
+find_package(protobuf REQUIRED CONFIG)
 find_package(absl REQUIRED)
 
 add_subdirectory(assets)
@@ -75,8 +74,7 @@ target_link_libraries(engine PUBLIC
     SDL2_mixer::SDL2_mixer
     SDL2_net::SDL2_net
     GLEW::glew
-    OpenGL::GL
-    glm::glm)
+    OpenGL::GL)
 target_include_directories(engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(engine PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 target_assets(engine PRIVATE
@@ -88,12 +86,12 @@ target_assets(engine PRIVATE
     opengl/sprite.vert
 )
 
-add_executable(sprite_test examples/sprite_test.cpp)
-target_link_libraries(sprite_test PRIVATE engine)
+add_executable(sprite_test WIN32 examples/sprite_test.cpp examples/sprite_test.rc)
+target_link_libraries(sprite_test PRIVATE engine SDL2::SDL2main)
 target_assets(sprite_test PRIVATE examples/test_sprite.png)
 
-add_executable(music_test examples/music_test.cpp)
-target_link_libraries(music_test PRIVATE engine)
+add_executable(music_test WIN32 examples/music_test.cpp)
+target_link_libraries(music_test PRIVATE engine SDL2::SDL2main)
 target_assets(music_test PRIVATE examples/test_music.mp3 examples/blib.wav)
 
 add_library(message STATIC examples/message.hpp examples/message.cpp)

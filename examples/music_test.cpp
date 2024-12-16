@@ -1,3 +1,5 @@
+#include <SDL2/SDL_main.h>
+
 #include <audio/audio.hpp>
 #include <audio/chunk.hpp>
 #include <audio/music.hpp>

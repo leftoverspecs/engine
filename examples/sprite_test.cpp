@@ -1,3 +1,5 @@
+#include <SDL2/SDL_main.h>
+
 #include <opengl/spritemap.hpp>
 #include <opengl/spriterenderer.hpp>
 
@@ -57,7 +59,7 @@ private:
 };
 
 
-int main() {
+int main(int argc, char *argv[]) {
     engine::sdl::initialize init(SDL_INIT_VIDEO);
     SpriteTestScene scene;
     scene.run();

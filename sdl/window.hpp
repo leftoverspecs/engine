@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SDL_video.h>
+#include <SDL2/SDL_video.h>
 
 namespace engine::sdl {
 
