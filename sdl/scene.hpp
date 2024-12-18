@@ -5,7 +5,7 @@
 
 #include <opengl/destination.hpp>
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 namespace engine::sdl {
 

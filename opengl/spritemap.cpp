@@ -2,7 +2,7 @@
 
 #include <graphics/image.hpp>
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 #include <stdexcept>
 

@@ -1,4 +1,4 @@
-#include <SDL2/SDL_main.h>
+#include <SDL_main.h>
 
 #include <audio/audio.hpp>
 #include <audio/chunk.hpp>
