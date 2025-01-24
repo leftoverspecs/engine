@@ -11,6 +11,7 @@ public:
     ~OpenGlWindow();
 
     void swap_window() const;
+    void set_title(const char *title) const;
 
 private:
     class OpenGlAttributes {

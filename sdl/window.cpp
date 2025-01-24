@@ -20,4 +20,8 @@ SDL_Window *Window::get_window() const {
     return window;
 }
 
+void Window::set_title(const char *title) const {
+    SDL_SetWindowTitle(window, title);
 }
+
+}// namespace engine::sdl

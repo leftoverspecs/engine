@@ -45,6 +45,7 @@ bool Scene::run() {
         last = next;
         on_loop(delta_time);
         window.swap_window();
+        window.set_title(std::to_string(1000.0 / delta_time).c_str());
     }
     return true;
 }

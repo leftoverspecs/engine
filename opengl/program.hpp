@@ -44,6 +44,8 @@ public:
     void link() const;
     [[nodiscard]] Usage use() const;
 
+    void uniform_block_binding(const GLchar *name, GLuint uniformBlockBinding) const;
+
     Program(const Program &) = delete;
     Program &operator = (const Program &) = delete;
 private:

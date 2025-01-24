@@ -27,6 +27,9 @@ public:
     [[nodiscard]] Binding bind(GLenum target) const;
     [[nodiscard]] GLuint get_id() const { return id; }
 
+    void bind_buffer_base(GLenum target,
+                          GLuint index) const;
+
     Buffer(const Buffer &) = delete;
     Buffer &operator = (const Buffer &) = delete;
 private:

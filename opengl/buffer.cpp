@@ -36,4 +36,8 @@ Buffer::Binding Buffer::bind(GLenum target) const {
     return {target, *this};
 }
 
+void Buffer::bind_buffer_base(GLenum target, GLuint index) const {
+    glBindBufferBase(target, index, id);
 }
+
+}// namespace engine::opengl

@@ -81,4 +81,8 @@ Program::Usage Program::use() const {
     return Usage(*this);
 }
 
+void Program::uniform_block_binding(const GLchar *name, GLuint uniformBlockBinding) const {
+    glUniformBlockBinding(id, glGetUniformBlockIndex(id, name), uniformBlockBinding);
 }
+
+}// namespace engine::opengl

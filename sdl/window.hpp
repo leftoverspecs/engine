@@ -15,6 +15,8 @@ public:
     Window& operator=(const Window&) = delete;
 
     [[nodiscard]] SDL_Window* get_window() const;
+    void set_title(const char * title) const;
+
 private:
     SDL_Window *window{nullptr};
 };

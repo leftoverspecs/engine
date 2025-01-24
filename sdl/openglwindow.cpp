@@ -44,4 +44,8 @@ void OpenGlWindow::swap_window() const {
     SDL_GL_SwapWindow(window.get_window());
 }
 
+void OpenGlWindow::set_title(const char *title) const {
+    window.set_title(title);
+}
+
 }// namespace engine::sdl
