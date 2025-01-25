@@ -88,7 +88,6 @@ bool Scene::fade_in_and_run(float time) {
         glClear(GL_COLOR_BUFFER_BIT);
         screen->draw(glm::vec4(value, value, value, 1.0f));
         window.swap_window();
-        window.set_title(std::to_string(1000.0 / delta_time).c_str());
     }
     on_shutdown();
     return true;
