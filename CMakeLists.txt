@@ -43,6 +43,8 @@ add_library(engine STATIC
     opengl/buffer.hpp
     opengl/destination.cpp
     opengl/destination.hpp
+    opengl/font.cpp
+    opengl/font.hpp
     opengl/framebuffer.cpp
     opengl/framebuffer.hpp
     opengl/program.cpp
