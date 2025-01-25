@@ -1,5 +1,6 @@
 #pragma once
 
+#include "opengl/screen.hpp"
 #include "openglwindow.hpp"
 
 
@@ -11,7 +12,7 @@ namespace engine::sdl {
 
 class Scene {
 public:
-    explicit Scene(int screen_height, OpenGlWindow &window);
+    explicit Scene(opengl::Screen &screen, int screen_height, OpenGlWindow &window);
     virtual ~Scene() = default;
 
     bool run();
@@ -19,8 +20,10 @@ public:
     void exit();
 
 private:
+    bool fullscreen{false};
     int screen_height;
     OpenGlWindow &window;
+    opengl::Screen *screen;
     bool finished{false};
 
     virtual void on_startup();

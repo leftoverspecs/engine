@@ -4,8 +4,8 @@
 
 namespace engine::sdl {
 
-Scene::Scene(int screen_height, OpenGlWindow &window)
-    : screen_height{screen_height}, window{window} {}
+Scene::Scene(opengl::Screen &screen, int screen_height, OpenGlWindow &window)
+    : screen(&screen), screen_height{screen_height}, window{window} {}
 
 bool Scene::run() {
     on_startup();
@@ -21,6 +21,11 @@ bool Scene::run() {
                 switch (event.key.keysym.sym) {
                 case SDLK_ESCAPE:
                     return false;
+                case SDLK_f:
+                    fullscreen = !fullscreen;
+                    window.set_fullscreen(fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+                    screen->switch_fullscreen(window.get_window_display_index(), fullscreen);
+                    break;
                 default:
                     on_key_pressed(event.key.keysym.sym);
                     break;
@@ -44,7 +49,16 @@ bool Scene::run() {
         const Uint64 next = SDL_GetTicks64();
         const auto delta_time = static_cast<float>(next - last);
         last = next;
-        on_loop(delta_time);
+        {
+            auto binding = screen->bind_as_target();
+            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT);
+            on_loop(delta_time);
+        }
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        screen->update(delta_time);
+        screen->draw();
         window.swap_window();
         window.set_title(std::to_string(1000.0 / delta_time).c_str());
     }

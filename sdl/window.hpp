@@ -16,7 +16,8 @@ public:
 
     [[nodiscard]] SDL_Window* get_window() const;
     void set_title(const char * title) const;
-
+    void set_fullscreen(Uint32 flags) const;
+    int get_window_display_index() const;
 private:
     SDL_Window *window{nullptr};
 };

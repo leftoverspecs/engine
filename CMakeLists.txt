@@ -51,6 +51,8 @@ add_library(engine STATIC
     opengl/program.hpp
     opengl/renderbuffer.cpp
     opengl/renderbuffer.hpp
+    opengl/screen.cpp
+    opengl/screen.hpp
     opengl/shader.cpp
     opengl/shader.hpp
     opengl/spritemap.cpp

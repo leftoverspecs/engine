@@ -48,4 +48,12 @@ void OpenGlWindow::set_title(const char *title) const {
     window.set_title(title);
 }
 
+void OpenGlWindow::set_fullscreen(Uint32 flags) const {
+    window.set_fullscreen(flags);
+}
+
+int OpenGlWindow::get_window_display_index() const {
+    return window.get_window_display_index();
+}
+
 }// namespace engine::sdl

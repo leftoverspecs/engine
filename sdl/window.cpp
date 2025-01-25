@@ -24,4 +24,12 @@ void Window::set_title(const char *title) const {
     SDL_SetWindowTitle(window, title);
 }
 
+void Window::set_fullscreen(Uint32 flags) const {
+    SDL_SetWindowFullscreen(window, flags);
+}
+
+int Window::get_window_display_index() const {
+    return SDL_GetWindowDisplayIndex(window);
+}
+
 }// namespace engine::sdl
