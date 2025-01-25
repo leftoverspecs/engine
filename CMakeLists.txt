@@ -37,8 +37,8 @@ add_library(engine STATIC
     networking/transmit.cpp
     networking/initialize.hpp
     networking/initialize.cpp
-    opengl/box.cpp
-    opengl/box.hpp
+    opengl/boxrenderer.cpp
+    opengl/boxrenderer.hpp
     opengl/buffer.cpp
     opengl/buffer.hpp
     opengl/destination.cpp

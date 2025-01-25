@@ -14,6 +14,8 @@ public:
     Keyboard &operator = (const Keyboard &) = delete;
     Keyboard &operator = (Keyboard &&) = delete;
 
+    int is_up_pressed() const { return up; }
+    int is_down_pressed() const { return down; }
     int is_left_pressed() const { return left; }
     int is_right_pressed() const { return right; }
     int is_space_pressed() const { return space; }
@@ -22,6 +24,8 @@ public:
     int is_lshift_pressed() const { return lshift; }
 private:
     int space{};
+    int up{};
+    int down{};
     int left{};
     int right{};
     int a{};

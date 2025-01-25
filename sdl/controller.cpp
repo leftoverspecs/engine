@@ -28,6 +28,20 @@ int Controller::is_button_a_pressed() const {
     return keyboard->is_space_pressed();
 }
 
+int Controller::is_button_up_pressed() const {
+    if (!keyboard) {
+        return buttons[SDL_CONTROLLER_BUTTON_DPAD_UP];
+    }
+    return keyboard->is_up_pressed();
+}
+
+int Controller::is_button_down_pressed() const {
+    if (!keyboard) {
+        return buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN];
+    }
+    return keyboard->is_down_pressed();
+}
+
 int Controller::is_button_left_pressed() const {
     if (!keyboard) {
         return buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT];
@@ -53,6 +67,11 @@ void Controller::rumble(Uint16 low_freq, Uint16 high_freq, Uint32 duration) cons
     if (!keyboard) {
         SDL_GameControllerRumble(controller, low_freq, high_freq, duration);
     }
+}
+
+void Controller::reset() {
+    axis = { 0 };
+    buttons = { 0 };
 }
 
 int Controller::get_num_controllers() {

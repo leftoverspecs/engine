@@ -14,6 +14,12 @@ int Keyboard::filter_events(const SDL_Event *event) {
     switch (event->type) {
     case SDL_KEYDOWN:
         switch (event->key.keysym.sym) {
+        case SDLK_UP:
+            ++up;
+            break;
+        case SDLK_DOWN:
+            ++down;
+            break;
         case SDLK_LEFT:
             ++left;
             break;
@@ -38,6 +44,12 @@ int Keyboard::filter_events(const SDL_Event *event) {
         break;
     case SDL_KEYUP:
         switch (event->key.keysym.sym) {
+        case SDLK_UP:
+            up = 0;
+            break;
+        case SDLK_DOWN:
+            down = 0;
+            break;
         case SDLK_LEFT:
             left = 0;
             break;
