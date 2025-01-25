@@ -86,8 +86,9 @@ void SpriteRenderer::queue(const glm::mat4 &model, const glm::vec4 &color, const
     batch.insert(batch.end(), data, data + std::size(data));
 }
 
-void SpriteRenderer::draw() const {
+void SpriteRenderer::draw(bool debug) const {
     auto usage = shader.use();
+    usage.set_uniform("debug", debug ? 1 : 0);
     auto texture_binding = map.bind(GL_TEXTURE0, GL_TEXTURE_2D);
     auto binding = vao.bind();
     auto buffer_binding = vertex_buffer.bind(GL_ARRAY_BUFFER);

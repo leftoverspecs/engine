@@ -27,7 +27,7 @@ public:
     void queue(const glm::mat4 &model, const glm::vec4 &color,
                const SpriteMap::TextureRect &rect);
 
-    void draw() const;
+    void draw(bool debug = false) const;
 private:
     Program shader;
     VertexArray vao;
