@@ -4,7 +4,7 @@
 
 #include <stdexcept>
 
-namespace engine {
+namespace engine::audio {
 
 #ifndef WIN32
 namespace {

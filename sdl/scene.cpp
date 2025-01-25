@@ -8,6 +8,7 @@ Scene::Scene(int screen_height, OpenGlWindow &window)
     : screen_height{screen_height}, window{window} {}
 
 bool Scene::run() {
+    on_startup();
     finished = false;
     Uint64 last = SDL_GetTicks64();
     while (!finished) {
@@ -47,12 +48,16 @@ bool Scene::run() {
         window.swap_window();
         window.set_title(std::to_string(1000.0 / delta_time).c_str());
     }
+    on_shutdown();
     return true;
 }
 
 void Scene::exit() {
     finished = true;
 }
+
+void Scene::on_startup() {}
+void Scene::on_shutdown() {}
 
 void Scene::on_key_pressed(SDL_Keycode code) {}
 void Scene::on_mouse_button_down(int x, int y) {}

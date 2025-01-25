@@ -23,6 +23,8 @@ private:
     OpenGlWindow &window;
     bool finished{false};
 
+    virtual void on_startup();
+    virtual void on_shutdown();
     virtual void on_loop(float delta_time) = 0;
     virtual void on_key_pressed(SDL_Keycode code);
     virtual void on_mouse_button_down(int x, int y);

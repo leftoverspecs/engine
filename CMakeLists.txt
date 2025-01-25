@@ -20,6 +20,8 @@ add_library(engine STATIC
     audio/audio.hpp
     audio/chunk.cpp
     audio/chunk.hpp
+    audio/initialize.cpp
+    audio/initialize.hpp
     audio/music.cpp
     audio/music.hpp
     audio/wave.cpp

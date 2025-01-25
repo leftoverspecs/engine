@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-namespace engine {
+namespace engine::audio {
 
 Music::Music(const unsigned char *data, std::size_t size)
   : music(Mix_LoadMUS_RW(SDL_RWFromConstMem(data, static_cast<int>(size)), 1))
