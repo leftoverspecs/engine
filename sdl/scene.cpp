@@ -8,6 +8,14 @@ Scene::Scene(opengl::Screen &screen, int screen_height, OpenGlWindow &window)
     : screen(&screen), screen_height{screen_height}, window{window} {}
 
 bool Scene::run() {
+    return fade_in_and_run(0.0f);
+}
+
+bool Scene::fade_in_and_run(float time) {
+    if (time > 0.0f) {
+        fade_in_timer = time;
+        current_fade_in_timer = 0.0f;
+    }
     on_startup();
     finished = false;
     Uint64 last = SDL_GetTicks64();
@@ -55,9 +63,30 @@ bool Scene::run() {
             glClear(GL_COLOR_BUFFER_BIT);
             on_loop(delta_time);
         }
+        GLfloat value = 1.0f;
+        if (fade_in_timer > 0.0f) {
+            current_fade_in_timer += delta_time;
+            value = current_fade_in_timer / fade_in_timer;
+            if (current_fade_in_timer > fade_in_timer) {
+                current_fade_in_timer = -1.0f;
+                fade_in_timer = -1.0f;
+                value = 1.0f;
+                on_faded_in();
+            }
+        }
+        if (fade_out_timer > 0.0f) {
+            current_fade_out_timer += delta_time;
+            value = 1.0f - current_fade_out_timer / fade_out_timer;
+            if (current_fade_out_timer >= fade_out_timer) {
+                finished = true;
+                fade_out_timer = -1.0f;
+                current_fade_out_timer = -1.0f;
+                value = 0.0f;
+            }
+        }
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        screen->draw(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+        screen->draw(glm::vec4(value, value, value, 1.0f));
         window.swap_window();
         window.set_title(std::to_string(1000.0 / delta_time).c_str());
     }
@@ -69,8 +98,14 @@ void Scene::exit() {
     finished = true;
 }
 
+void Scene::fade_out(float time) {
+    fade_out_timer = time;
+    current_fade_out_timer = 0.0f;
+}
+
 void Scene::on_startup() {}
 void Scene::on_shutdown() {}
+void Scene::on_faded_in() {}
 
 void Scene::on_key_pressed(SDL_Keycode code) {}
 void Scene::on_mouse_button_down(int x, int y) {}
