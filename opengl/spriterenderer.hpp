@@ -23,6 +23,8 @@ public:
     void queue(const glm::mat4 &model, const glm::vec4 &color,
                unsigned int i, unsigned int j);
     void queue(const glm::mat4 &model, const glm::vec4 &color,
+               unsigned int i, unsigned int j, unsigned int w, unsigned int h);
+    void queue(const glm::mat4 &model, const glm::vec4 &color,
                const SpriteMap::TextureRect &rect);
 
     void draw() const;

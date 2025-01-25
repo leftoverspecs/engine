@@ -34,10 +34,16 @@ Texture::Binding SpriteMap::bind(GLenum texture_unit, GLenum target) const {
 }
 
 SpriteMap::TextureRect SpriteMap::get_sprite(unsigned int i, unsigned j) const {
+    return get_sprite(i, j, 1, 1);
+}
+
+SpriteMap::TextureRect SpriteMap::get_sprite(unsigned int i, unsigned j, unsigned w, unsigned h) const {
     const auto fi = static_cast<GLfloat>(i);
     const auto fj = static_cast<GLfloat>(j);
+    const auto fw = static_cast<GLfloat>(w);
+    const auto fh = static_cast<GLfloat>(h);
     return TextureRect { fi / columns, fj / rows,
-                        (fi + 1.0f) / columns, (fj + 1.0f) / rows };
+                        (fi + fw) / columns, (fj + fh) / rows };
 }
 
 }

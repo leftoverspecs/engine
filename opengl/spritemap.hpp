@@ -20,6 +20,7 @@ public:
     };
 
     [[nodiscard]] TextureRect get_sprite(unsigned int i, unsigned j) const;
+    [[nodiscard]] TextureRect get_sprite(unsigned int i, unsigned j, unsigned w, unsigned h) const;
 
     [[nodiscard]] GLfloat get_sprite_width() const { return sprite_width; }
     [[nodiscard]] GLfloat get_sprite_height() const { return sprite_height; }

@@ -59,6 +59,12 @@ void SpriteRenderer::queue(const glm::mat4 &model, const glm::vec4 &color,
     queue(model, color, rect);
 }
 
+void SpriteRenderer::queue(const glm::mat4 &model, const glm::vec4 &color,
+                           unsigned int i, unsigned int j, unsigned int w, unsigned int h) {
+    const SpriteMap::TextureRect rect = map.get_sprite(i, j, w, h);
+    queue(model, color, rect);
+}
+
 void SpriteRenderer::queue(const glm::mat4 &model, const glm::vec4 &color, const SpriteMap::TextureRect &rect) {
     const glm::vec4 a = model * glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
     const glm::vec4 b = model * glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);

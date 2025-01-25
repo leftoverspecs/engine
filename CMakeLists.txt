@@ -57,8 +57,12 @@ add_library(engine STATIC
     opengl/texture.hpp
     opengl/vertexarray.cpp
     opengl/vertexarray.hpp
+    sdl/controller.hpp
+    sdl/controller.cpp
     sdl/initialize.hpp
     sdl/initialize.cpp
+    sdl/keyboard.hpp
+    sdl/keyboard.cpp
     sdl/openglwindow.cpp
     sdl/openglwindow.hpp
     sdl/scene.cpp
