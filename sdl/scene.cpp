@@ -57,8 +57,7 @@ bool Scene::run() {
         }
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        screen->update(delta_time);
-        screen->draw();
+        screen->draw(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
         window.swap_window();
         window.set_title(std::to_string(1000.0 / delta_time).c_str());
     }

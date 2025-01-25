@@ -8,7 +8,6 @@
 #include "vertexarray.hpp"
 
 #include <glm/mat4x4.hpp>
-#include <glm/vec3.hpp>
 
 #include <stdexcept>
 
@@ -25,7 +24,7 @@ public:
 
     [[nodiscard]] Framebuffer::Binding bind_as_target() const;
 
-    void draw(const glm::mat4x4 &projection, const glm::vec3 &color, float alpha, const glm::vec3 &factor) const;
+    void draw(const glm::mat4x4 &projection, const glm::vec4 &tint) const;
 
     void set_gamma(float gamma);
     void set_exposure(float exposure);
