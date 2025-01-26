@@ -15,22 +15,24 @@ constexpr int HEIGHT = 600;
 class MusicTestScene : public engine::sdl::Scene {
 public:
     MusicTestScene()
-        : Scene(HEIGHT, window),
+        : Scene(screen, HEIGHT, window),
           window("visualizer",
                  SDL_WINDOWPOS_CENTERED,
                  SDL_WINDOWPOS_CENTERED,
                  WIDTH,
                  HEIGHT,
                  SDL_WINDOW_SHOWN),
+          screen(WIDTH, HEIGHT),
           audio(44100, MIX_DEFAULT_FORMAT, 2, 128),
           music(test_music_mp3, sizeof(test_music_mp3)),
           chunk(blib_wav, sizeof(blib_wav)) {}
 
 private:
     engine::sdl::OpenGlWindow window;
-    engine::Audio audio;
-    engine::Music music;
-    engine::Chunk chunk;
+    engine::opengl::Screen screen;
+    engine::audio::Audio audio;
+    engine::audio::Music music;
+    engine::audio::Chunk chunk;
     bool playing{false};
 
     void on_loop(float delta_time) override {}
@@ -41,7 +43,7 @@ private:
                 music.fade_in(-1, 1000);
                 playing = true;
             } else {
-                engine::Music::fade_out(1000);
+                engine::audio::Music::fade_out(1000);
                 playing = false;
             }
             break;

@@ -25,17 +25,20 @@ constexpr int HEIGHT = 600;
 class SpriteTestScene : public engine::sdl::Scene {
 public:
     SpriteTestScene()
-        : Scene(HEIGHT, window), window("Sprite Test", SDL_WINDOWPOS_CENTERED,
+        : Scene(screen, HEIGHT, window),
+          window("Sprite Test", SDL_WINDOWPOS_CENTERED,
                                         SDL_WINDOWPOS_CENTERED,
                                         WIDTH,
                                         HEIGHT,
                                         SDL_WINDOW_SHOWN),
+          screen(WIDTH, HEIGHT),
           sprites(test_sprite_png, sizeof(test_sprite_png), 1, 1),
           renderer(sprites, WIDTH, HEIGHT) {}
 
 
 private:
     engine::sdl::OpenGlWindow window;
+    engine::opengl::Screen screen;
     engine::opengl::SpriteMap sprites;
     engine::opengl::SpriteRenderer renderer;
 
