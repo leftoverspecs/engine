@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-namespace engine {
+namespace engine::audio {
 
 Chunk::Chunk(const unsigned char *data, std::size_t size)
   : chunk(Mix_LoadWAV_RW(SDL_RWFromConstMem(data, static_cast<int>(size)), 1))

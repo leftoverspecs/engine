@@ -4,7 +4,7 @@
 
 #include <cstddef>
 
-namespace engine {
+namespace engine::audio {
 
 class Chunk {
 public:
