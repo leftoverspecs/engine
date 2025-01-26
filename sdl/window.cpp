@@ -28,6 +28,10 @@ void Window::set_fullscreen(Uint32 flags) const {
     SDL_SetWindowFullscreen(window, flags);
 }
 
+void Window::set_icon(const graphics::Image &icon) const {
+    SDL_SetWindowIcon(window, icon.get_surface().get_surface());
+}
+
 int Window::get_window_display_index() const {
     return SDL_GetWindowDisplayIndex(window);
 }

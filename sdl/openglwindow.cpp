@@ -52,6 +52,10 @@ void OpenGlWindow::set_fullscreen(Uint32 flags) const {
     window.set_fullscreen(flags);
 }
 
+void OpenGlWindow::set_icon(const graphics::Image &icon) const {
+    window.set_icon(icon);
+}
+
 int OpenGlWindow::get_window_display_index() const {
     return window.get_window_display_index();
 }
