@@ -40,8 +40,8 @@ Destination::Destination(GLsizei screen_width, GLsizei screen_height)
         binding.enable_attribute(ATTRIBUTE_TEXTURE_COORD);
 
         auto buffer_binding = screen_vertices.bind(GL_ARRAY_BUFFER);
-        buffer_binding.vertex_attrib_pointer(binding, ATTRIBUTE_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, reinterpret_cast<void *>(0 * sizeof(float)));
-        buffer_binding.vertex_attrib_pointer(binding, ATTRIBUTE_TEXTURE_COORD, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, reinterpret_cast<void *>(2 * sizeof(float)));
+        binding.vertex_attrib_pointer(buffer_binding, ATTRIBUTE_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, reinterpret_cast<void *>(0 * sizeof(float)));
+        binding.vertex_attrib_pointer(buffer_binding, ATTRIBUTE_TEXTURE_COORD, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, reinterpret_cast<void *>(2 * sizeof(float)));
         buffer_binding.data(sizeof(screen_vertex_data), screen_vertex_data, GL_STATIC_DRAW);
     }
     {

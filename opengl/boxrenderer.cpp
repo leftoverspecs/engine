@@ -32,8 +32,8 @@ BoxRenderer::BoxRenderer(float screen_width, float screen_height)
         binding.enable_attribute(ATTRIBUTE_COLOR);
 
         auto buffer_binding = vertex_buffer.bind(GL_ARRAY_BUFFER);
-        buffer_binding.vertex_attrib_pointer(binding, ATTRIBUTE_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 6, (void *)(0 * sizeof(GLfloat)));
-        buffer_binding.vertex_attrib_pointer(binding, ATTRIBUTE_COLOR, 4, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 6, (void *)(2 * sizeof(GLfloat)));
+        binding.vertex_attrib_pointer(buffer_binding, ATTRIBUTE_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 6, (void *)(0 * sizeof(GLfloat)));
+        binding.vertex_attrib_pointer(buffer_binding, ATTRIBUTE_COLOR, 4, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 6, (void *)(2 * sizeof(GLfloat)));
         buffer_binding.data(CAPACITY * sizeof(GLfloat), nullptr, GL_DYNAMIC_DRAW);
     }
     batch.reserve(CAPACITY);

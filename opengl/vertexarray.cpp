@@ -16,6 +16,10 @@ VertexArray::Binding::~Binding() {
     }
 }
 
+void VertexArray::Binding::vertex_attrib_pointer(const Buffer::Binding &, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void *pointer) const {
+    glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+}
+
 void VertexArray::Binding::enable_attribute(GLuint index) const {
     if (bound) {
         glEnableVertexAttribArray(index);

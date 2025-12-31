@@ -20,10 +20,6 @@ void Buffer::Binding::subdata(GLintptr offset, GLsizeiptr size, const void *data
     glBufferSubData(target, offset, size, data);
 }
 
-void Buffer::Binding::vertex_attrib_pointer(const VertexArray::Binding &vao, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void *pointer) const {
-    glVertexAttribPointer(index, size, type, normalized, stride, pointer);
-}
-
 Buffer::Buffer() {
     glGenBuffers(1, &id);
 }

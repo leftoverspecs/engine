@@ -1,8 +1,8 @@
 #pragma once
 
-#include <GL/glew.h>
+#include "buffer.hpp"
 
-#include <optional>
+#include <GL/glew.h>
 
 namespace engine::opengl {
 
@@ -13,6 +13,7 @@ public:
         explicit Binding(const VertexArray &vao);
         ~Binding();
 
+        void vertex_attrib_pointer(const Buffer::Binding &, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void *pointer) const;
         void enable_attribute(GLuint index) const;
 
         Binding(Binding &&) = delete;

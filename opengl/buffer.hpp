@@ -1,7 +1,5 @@
 #pragma once
 
-#include "vertexarray.hpp"
-
 #include <GL/glew.h>
 
 namespace engine::opengl {
@@ -15,7 +13,6 @@ public:
 
         void data(GLsizeiptr size, const void *data, GLenum usage) const;
         void subdata(GLintptr offset, GLsizeiptr size, const void *data) const;
-        void vertex_attrib_pointer(const VertexArray::Binding &vao, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void *pointer) const;
     private:
         GLenum target;
 
