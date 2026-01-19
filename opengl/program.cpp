@@ -23,6 +23,10 @@ void Program::Usage::set_uniform(const char *name, const glm::mat4x4 &m, bool tr
     glUniformMatrix4fv(glGetUniformLocation(program->id, name), 1, transpose ? GL_TRUE : GL_FALSE, value_ptr(m));
 }
 
+void Program::Usage::set_uniform(const char *name, const glm::mat3x3 &m, bool transpose) const {
+    glUniformMatrix3fv(glGetUniformLocation(program->id, name), 1, transpose ? GL_TRUE : GL_FALSE, value_ptr(m));
+}
+
 void Program::Usage::set_uniform(const char *name, const glm::mat2 &m, bool transpose) const {
     glUniformMatrix2fv(glGetUniformLocation(program->id, name), 1, transpose ? GL_TRUE : GL_FALSE, value_ptr(m));
 }
