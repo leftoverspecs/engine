@@ -77,6 +77,8 @@ add_library(engine STATIC
     sdl/surface.hpp
     sdl/window.cpp
     sdl/window.hpp
+    opengl/model.cpp
+    opengl/model.h
 )
 target_link_libraries(engine PUBLIC
     SDL2::SDL2
@@ -92,6 +94,8 @@ target_assets(engine PRIVATE
     opengl/box.vert
     opengl/destination.frag
     opengl/destination.vert
+    opengl/model.frag
+    opengl/model.vert
     opengl/sprite.frag
     opengl/sprite.vert
 )
@@ -114,3 +118,7 @@ target_link_libraries(test_server PRIVATE engine message)
 
 add_executable(test_client examples/test_client.cpp)
 target_link_libraries(test_client PRIVATE engine message)
+
+add_executable(test_model examples/test_model.cpp)
+target_link_libraries(test_model PRIVATE engine)
+target_assets(test_model PRIVATE examples/cube.mod)
