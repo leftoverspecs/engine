@@ -10,8 +10,8 @@ find_package(SDL2_image REQUIRED CONFIG)
 find_package(SDL2_mixer REQUIRED CONFIG)
 find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
-find_package(protobuf REQUIRED CONFIG)
-find_package(absl REQUIRED)
+#find_package(protobuf REQUIRED CONFIG)
+#find_package(absl REQUIRED)
 
 add_subdirectory(assets)
 
@@ -100,25 +100,25 @@ target_assets(engine PRIVATE
     opengl/sprite.vert
 )
 
-add_executable(sprite_test WIN32 examples/sprite_test.cpp examples/sprite_test.rc)
-target_link_libraries(sprite_test PRIVATE engine SDL2::SDL2main)
-target_assets(sprite_test PRIVATE examples/test_sprite.png)
+#add_executable(sprite_test WIN32 examples/sprite_test.cpp examples/sprite_test.rc)
+#target_link_libraries(sprite_test PRIVATE engine SDL2::SDL2main)
+#target_assets(sprite_test PRIVATE examples/test_sprite.png)
 
-add_executable(music_test WIN32 examples/music_test.cpp)
-target_link_libraries(music_test PRIVATE engine SDL2::SDL2main)
-target_assets(music_test PRIVATE examples/test_music.mp3 examples/blib.wav)
+#add_executable(music_test WIN32 examples/music_test.cpp)
+#target_link_libraries(music_test PRIVATE engine SDL2::SDL2main)
+#target_assets(music_test PRIVATE examples/test_music.mp3 examples/blib.wav)
 
-add_library(message STATIC examples/message.hpp examples/message.cpp)
-protobuf_generate(TARGET message PROTOS examples/example.proto)
-target_include_directories(message PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(message PUBLIC protobuf::libprotobuf absl::log_internal_check_op)
+#add_library(message STATIC examples/message.hpp examples/message.cpp)
+#protobuf_generate(TARGET message PROTOS examples/example.proto)
+#target_include_directories(message PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+#target_link_libraries(message PUBLIC protobuf::libprotobuf absl::log_internal_check_op)
 
-add_executable(test_server examples/test_server.cpp)
-target_link_libraries(test_server PRIVATE engine message)
+#add_executable(test_server examples/test_server.cpp)
+#target_link_libraries(test_server PRIVATE engine message)
 
-add_executable(test_client examples/test_client.cpp)
-target_link_libraries(test_client PRIVATE engine message)
+#add_executable(test_client examples/test_client.cpp)
+#target_link_libraries(test_client PRIVATE engine message)
 
-add_executable(test_model examples/test_model.cpp)
-target_link_libraries(test_model PRIVATE engine)
-target_assets(test_model PRIVATE examples/cube.mod)
+#add_executable(test_model examples/test_model.cpp)
+#target_link_libraries(test_model PRIVATE engine)
+#target_assets(test_model PRIVATE examples/cube.mod)
