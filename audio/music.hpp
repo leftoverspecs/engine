@@ -3,6 +3,7 @@
 #include <SDL_mixer.h>
 
 #include <cstddef>
+#include <functional>
 
 namespace engine::audio {
 
@@ -18,6 +19,7 @@ public:
 
     void fade_in(int loops, int ms) const;
     static void fade_out(int ms);
+    static void set_finish_callback(std::function<void(const Music *)> callback);
 
     static void set_volume(int volume);
 private:
