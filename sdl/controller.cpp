@@ -28,6 +28,27 @@ int Controller::is_button_a_pressed() const {
     return keyboard->is_space_pressed();
 }
 
+int Controller::is_button_b_pressed() const {
+    if (!keyboard) {
+        return buttons[SDL_CONTROLLER_BUTTON_B];
+    }
+    return keyboard->is_space_pressed();
+}
+
+int Controller::is_button_x_pressed() const {
+    if (!keyboard) {
+        return buttons[SDL_CONTROLLER_BUTTON_X];
+    }
+    return keyboard->is_space_pressed();
+}
+
+int Controller::is_button_y_pressed() const {
+    if (!keyboard) {
+        return buttons[SDL_CONTROLLER_BUTTON_Y];
+    }
+    return keyboard->is_space_pressed();
+}
+
 int Controller::is_button_up_pressed() const {
     if (!keyboard) {
         return buttons[SDL_CONTROLLER_BUTTON_DPAD_UP];

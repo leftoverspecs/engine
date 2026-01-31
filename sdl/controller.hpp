@@ -22,6 +22,9 @@ public:
     Controller &operator = (Controller &&) = delete;
 
     int is_button_a_pressed() const;
+    int is_button_b_pressed() const;
+    int is_button_x_pressed() const;
+    int is_button_y_pressed() const;
     int is_button_up_pressed() const;
     int is_button_down_pressed() const;
     int is_button_left_pressed() const;
