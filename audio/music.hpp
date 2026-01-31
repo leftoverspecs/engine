@@ -14,6 +14,8 @@ public:
     Music(const Music &) = delete;
     Music &operator = (const Music &) = delete;
 
+    [[nodiscard]] double get_position() const;
+
     void fade_in(int loops, int ms) const;
     static void fade_out(int ms);
 

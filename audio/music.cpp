@@ -16,6 +16,10 @@ Music::~Music() {
     Mix_FreeMusic(music);
 }
 
+double Music::get_position() const {
+    return Mix_GetMusicPosition(music);
+}
+
 void Music::fade_in(int loops, int ms) const {
     if (Mix_FadeInMusic(music, loops, ms) != 0) {
         throw std::runtime_error(SDL_GetError());
