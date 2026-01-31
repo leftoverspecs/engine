@@ -7,6 +7,7 @@
 
 #include <array>
 #include <optional>
+#include <glm/vec2.hpp>
 
 namespace engine::sdl {
 
@@ -27,6 +28,7 @@ public:
     int is_button_right_pressed() const;
 
     int get_right_trigger() const;
+    glm::vec2 get_joystick_position() const;
 
     void rumble(Uint16 low_freq, Uint16 high_freq, Uint32 duration) const;
     void reset();

@@ -63,6 +63,14 @@ int Controller::get_right_trigger() const {
     return keyboard->is_lshift_pressed();
 }
 
+glm::vec2 Controller::get_joystick_position() const {
+    const int x = axis[SDL_CONTROLLER_AXIS_LEFTX];
+    const int y = axis[SDL_CONTROLLER_AXIS_LEFTY];
+    const float fx = x < 0 ? static_cast<float>(x) / static_cast<float>(-SDL_JOYSTICK_AXIS_MIN) : static_cast<float>(x) / static_cast<float>(SDL_JOYSTICK_AXIS_MAX);
+    const float fy = y < 0 ? static_cast<float>(y) / static_cast<float>(-SDL_JOYSTICK_AXIS_MIN) : static_cast<float>(y) / static_cast<float>(SDL_JOYSTICK_AXIS_MAX);
+    return {fx, fy};
+}
+
 void Controller::rumble(Uint16 low_freq, Uint16 high_freq, Uint32 duration) const {
     if (!keyboard) {
         SDL_GameControllerRumble(controller, low_freq, high_freq, duration);
