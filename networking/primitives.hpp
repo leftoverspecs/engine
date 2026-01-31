@@ -30,6 +30,19 @@ uint32_t read_uint32(It &pos, It end) {
     }
 }
 
+    template<typename It>
+int32_t read_int32(It &pos, It end) {
+    if (std::distance(pos, end) >= sizeof(int)) {
+        const uint32_t b1 = read_uint8(pos, end) << 24;
+        const uint32_t b2 = read_uint8(pos, end) << 16;
+        const uint32_t b3 = read_uint8(pos, end) << 8;
+        const uint32_t b4 = read_uint8(pos, end);
+        return static_cast<int32_t>(b1 | b2 | b3 | b4);
+    } else {
+        throw std::runtime_error("Not enough data in buffer: can't read uint32_t");
+    }
+}
+
 template<typename It>
 float read_float(It &pos, It end) {
     if (std::distance(pos, end) >= sizeof(float)) {
@@ -71,10 +84,19 @@ void write_uint8(It &pos, uint8_t value) {
 
 template<typename It>
 void write_uint32(It &pos, uint32_t value) {
-    write_uint8(pos, (value & 0xff0000000) >> 24);
-    write_uint8(pos, (value & 0x00ff0000) >> 16);
-    write_uint8(pos, (value & 0x0000ff00) >> 8);
-    write_uint8(pos,  value & 0x000000ff);
+    write_uint8(pos, (value & 0xff000000u) >> 24);
+    write_uint8(pos, (value & 0x00ff0000u) >> 16);
+    write_uint8(pos, (value & 0x0000ff00u) >> 8);
+    write_uint8(pos,  value & 0x000000ffu);
+}
+
+    template<typename It>
+void write_int32(It &pos, int32_t value) {
+    uint32_t uvalue = static_cast<uint32_t>(value);
+    write_uint8(pos, (uvalue & 0xff000000u) >> 24);
+    write_uint8(pos, (uvalue & 0x00ff0000u) >> 16);
+    write_uint8(pos, (uvalue & 0x0000ff00u) >> 8);
+    write_uint8(pos,  uvalue & 0x000000ffu);
 }
 
 template<typename It>
