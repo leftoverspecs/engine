@@ -22,6 +22,7 @@ public:
     void fade_out(float time);
 
     bool is_fading_out() const { return fade_out_timer > 0.0f; }
+    bool is_fullscreen() const { return fullscreen; }
 
 private:
     bool fullscreen{false};

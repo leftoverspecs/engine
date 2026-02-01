@@ -60,4 +60,8 @@ int OpenGlWindow::get_window_display_index() const {
     return window.get_window_display_index();
 }
 
+void OpenGlWindow::get_window_size(int &width, int &height) const {
+    SDL_GetWindowSize(window.get_window(), &width, &height);
+}
+
 }// namespace engine::sdl

@@ -18,6 +18,7 @@ public:
     void set_fullscreen(Uint32 flags) const;
     void set_icon(const graphics::Image &icon) const;
     [[nodiscard]] int get_window_display_index() const;
+    void get_window_size(int &width, int &height) const;
 
 private:
     class OpenGlAttributes {
