@@ -23,6 +23,7 @@ public:
 
     bool is_fading_out() const { return fade_out_timer > 0.0f; }
     bool is_fullscreen() const { return fullscreen; }
+    void set_fullscreen(bool value);
 
 private:
     bool fullscreen{false};

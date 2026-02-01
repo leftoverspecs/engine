@@ -30,9 +30,7 @@ bool Scene::fade_in_and_run(float time) {
                 case SDLK_ESCAPE:
                     return false;
                 case SDLK_f:
-                    fullscreen = !fullscreen;
-                    window.set_fullscreen(fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
-                    screen->switch_fullscreen(window.get_window_display_index(), fullscreen);
+                    set_fullscreen(!fullscreen);
                     break;
                 default:
                     on_key_pressed(event.key.keysym.sym);
@@ -100,6 +98,12 @@ void Scene::exit() {
 void Scene::fade_out(float time) {
     fade_out_timer = time;
     current_fade_out_timer = 0.0f;
+}
+
+void Scene::set_fullscreen(bool value) {
+    fullscreen = value;
+    window.set_fullscreen(fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0);
+    screen->switch_fullscreen(window.get_window_display_index(), fullscreen);
 }
 
 void Scene::on_startup() {}
