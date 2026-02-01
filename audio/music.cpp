@@ -48,8 +48,13 @@ void Music::fade_out(int ms) {
 }
 
 void Music::set_finish_callback(std::function<void(const Music *)> callback) {
-    current_finish_callback = std::move(callback);
-    Mix_HookMusicFinished(finish_callback);
+    if (callback) {
+        current_finish_callback = std::move(callback);
+        Mix_HookMusicFinished(finish_callback);
+    } else {
+        current_finish_callback = nullptr;
+        Mix_HookMusicFinished(nullptr);
+    }
 }
 
 void Music::set_volume(int volume) {
