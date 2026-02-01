@@ -8,7 +8,7 @@ namespace engine::audio {
 
 class Chunk {
 public:
-    Chunk(const unsigned char *data, std::size_t size);
+    Chunk(const unsigned char *data, std::size_t size, int channel = -1);
     ~Chunk();
 
     Chunk(const Chunk &) = delete;
@@ -21,6 +21,7 @@ public:
     void set_volume(int volume) const;
 private:
     Mix_Chunk *chunk;
+    int channel;
 };
 
 }

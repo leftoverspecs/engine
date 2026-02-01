@@ -4,8 +4,8 @@
 
 namespace engine::audio {
 
-Chunk::Chunk(const unsigned char *data, std::size_t size)
-  : chunk(Mix_LoadWAV_RW(SDL_RWFromConstMem(data, static_cast<int>(size)), 1))
+Chunk::Chunk(const unsigned char *data, std::size_t size, int channel)
+  : chunk(Mix_LoadWAV_RW(SDL_RWFromConstMem(data, static_cast<int>(size)), 1)), channel(channel)
 {
     if (chunk == nullptr) {
         throw std::runtime_error(SDL_GetError());
@@ -29,7 +29,7 @@ Chunk::~Chunk() {
 }
 
 void Chunk::play(int loops) const {
-    if (Mix_PlayChannel(-1, chunk, loops) == -1) {
+    if (Mix_PlayChannel(channel, chunk, loops) == -1) {
         throw std::runtime_error(SDL_GetError());
     }
 }
